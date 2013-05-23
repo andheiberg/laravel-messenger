@@ -1,0 +1,23 @@
+{
+    "name": "pichkrement/messenger",
+    "description": "",
+    "authors": [
+        {
+            "name": "Christian Hotz-Behofsits",
+            "email": "christian.hotz-behofsits@tuwien.ac.at"
+        }
+    ],
+    "require": {
+        "php": ">=5.3.0",
+        "illuminate/support": "4.0.x"
+    },
+    "autoload": {
+        "classmap": [
+            "src/migrations"
+        ],
+        "psr-0": {
+            "Pichkrement\\Messenger": "src/"
+        }
+    },
+    "minimum-stability": "dev"
+}
