@@ -15,3 +15,5 @@ Basic Messaging System for Laravel4
 2. *run migrations*: go into the root directory of your laravel 4 installation and enter
 
 > php artisan migrate --package "pichkrement/messenger"
+
+3. run composer dump-autoload
