@@ -26,7 +26,7 @@ Route::get($prefix."/inbox", function(){
 		echo "--> ". $con->name;
 	}
 
-	//return View::make("messenger::");
+	return View::make("messenger::conversation.index");
 
 });
 
