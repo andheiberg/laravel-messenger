@@ -34,15 +34,23 @@ Route::get($prefix."/inbox", function(){
 	//	$con->name;
 	//test login
 
-	//show all conversations
-	echo "Conversations";
+	return View::make('messenger::master');
 
 });
 
-Route::get($prefix."/conversation/{id}", function(){
-	//test login
+//Display messages from specific conversation
+Route::get($prefix.'/inbox/{id}', function($id){
 
-	//show all conversations
-	echo "Conversations";
+
+	echo "Load inbox from Conversation with id: ".$id;
+
+
+	//TODO nur Conversationen von eingeloggtem User anzeigen
+
+	$messages = DB::table('messages')->where('conversation', '=', $id)->get();
+
+	//var_dump($messages);	
+
+	return View::make('messenger::conversation.inbox', array('id' => $id));
 
 });
