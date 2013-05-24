@@ -20,37 +20,29 @@ Route::get($prefix, function(){
 
 Route::get($prefix."/inbox", function(){
 
-	$con = Conversation::find(1);
+	$cons = Conversation::all();
 
-	echo "test";
+	foreach($cons as $con){
+		echo "--> ". $con->name;
+	}
 
-	$ommi = User::find(1);
-
-	//var_dump($ommi->messages()->first());
-
-	var_dump($con->users()->first());
-
-	//foreach($cons as $con)
-	//	$con->name;
-	//test login
-
-	return View::make('messenger::master');
+	//return View::make("messenger::");
 
 });
 
 //Display messages from specific conversation
 Route::get($prefix.'/inbox/{id}', function($id){
+	$con = Conversation::find($id);
 
+	if($con == null)
+		return "failure"; //TODO
 
-	echo "Load inbox from Conversation with id: ".$id;
+	$msgs = $con->messages()->get();
 
+	foreach($msgs as $msg){
+		echo "---> ". $msg->user->username;
+	}
 
-	//TODO nur Conversationen von eingeloggtem User anzeigen
-
-	$messages = DB::table('messages')->where('conversation', '=', $id)->get();
-
-	//var_dump($messages);	
-
-	return View::make('messenger::conversation.inbox', array('id' => $id));
+	//return View::make('messenger::conversation.inbox', array('id' => $id));
 
 });
