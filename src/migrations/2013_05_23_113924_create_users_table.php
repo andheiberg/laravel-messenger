@@ -2,7 +2,7 @@
 
 use Illuminate\Database\Migrations\Migration;
 
-class UsersTable extends Migration {
+class CreateUsersTable extends Migration {
 
 	/**
 	 * Run the migrations.
@@ -41,7 +41,6 @@ class UsersTable extends Migration {
 					$table->string('email', 30)->unique();
 				});
 			}
-			
 		}
 	}
 

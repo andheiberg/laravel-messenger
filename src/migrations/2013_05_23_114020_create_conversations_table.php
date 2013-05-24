@@ -2,7 +2,7 @@
 
 use Illuminate\Database\Migrations\Migration;
 
-class ConversationsTable extends Migration {
+class CreateConversationsTable extends Migration {
 
 	/**
 	 * Run the migrations.
