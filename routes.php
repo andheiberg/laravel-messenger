@@ -19,6 +19,19 @@ Route::get($prefix, function(){
 });
 
 Route::get($prefix."/inbox", function(){
+
+	$con = Conversation::find(1);
+
+	echo "test";
+
+	$ommi = User::find(1);
+
+	//var_dump($ommi->messages()->first());
+
+	var_dump($con->users()->first());
+
+	//foreach($cons as $con)
+	//	$con->name;
 	//test login
 
 	//show all conversations
