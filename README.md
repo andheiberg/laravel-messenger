@@ -14,9 +14,12 @@ Basic Messaging System for Laravel4
 
 2. got to your laravel-public folder and run
 
-> composer install && composer dump-autoload
+> composer install && composer dump-autoload  
 > php artisan migrate --package "pichkrement/messenger"
 
 3. add the new ServiceProvider to your **app/config/app.php** *(providers-array)*
 
 > 'Pichkrement\Messenger\MessengerServiceProvider',
+
+
+![alt text]https://googledrive.com/host/0B_FVWRYj6sQ7cUhEXzdZaWowSWc "ER-Model")
