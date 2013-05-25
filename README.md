@@ -22,4 +22,4 @@ Basic Messaging System for Laravel4
 > 'Pichkrement\Messenger\MessengerServiceProvider',
 
 
-![ER-Model](https://googledrive.com/host/0B_FVWRYj6sQ7cUhEXzdZaWowSWc)
+![ER-Model](https://googledrive.com/host/0B_FVWRYj6sQ7WG42TVp2U0ZmaDQ)
