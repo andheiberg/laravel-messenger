@@ -10,6 +10,29 @@
 @stop
 
 @section('content')
+
+	<table>
+
+
+		@foreach($conversations as $con)
+
+			<td>
+				{{$con['id']}}
+			</td>
+
+			<td>
+				{{$con['name']}}
+			</td>
+
+			<td>
+				{{implode($con['users'])}}
+			</td>
+
+		@endforeach
+
+	</table>
+
+
 	@include('messenger::newConversation')
     <p>List of all Conversations</p>
 @stop

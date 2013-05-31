@@ -21,9 +21,9 @@ function getConversations(){
 
 		$item['id'] = $con->id;
 		$item['name'] = $con->name;
-		$item['users'] = $con->users;
+		$item['users'] = array();//$con->users;
 
-		var_dump($item['users']);
+		//var_dump($item['users']);
 
 		array_push($conversations, $item);
 	}
@@ -35,11 +35,7 @@ Route::get($prefix, function(){
 
 	$cons = getConversations();
 
-	foreach($cons as $con){
-		echo "--> ". $con['name'];
-	}
-
-	return View::make("messenger::conversations", array('conversations', $cons));
+	return View::make("messenger::conversations")->with('conversations', $cons);
 
 });
 
