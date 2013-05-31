@@ -52,6 +52,6 @@ Route::get($prefix.'/{id}', function($id){
 		echo "---> ". $msg->user->username;
 	}
 
-	return View::make("messenger::messages");
+	return View::make("messenger::messages")->with('messages', $msgs);
 
 });
