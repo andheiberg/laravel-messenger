@@ -10,15 +10,36 @@ $prefix = Config::get('messenger::messenger.route_prefix');
 
 //TODO: asset $prefix not empty string
 
-Route::get($prefix, function(){
-
+function getConversations(){
 	$cons = Conversation::all();
+	$conversations = array();
 
-	foreach($cons as $con){
-		echo "--> ". $con->name;
+	//add users to conversations
+	foreach($cons as &$con){
+		//find Users of specific conversation
+		$item = array();
+
+		$item['id'] = $con->id;
+		$item['name'] = $con->name;
+		$item['users'] = $con->users;
+
+		var_dump($item['users']);
+
+		array_push($conversations, $item);
 	}
 
-	return View::make("messenger::conversation.index");
+	return $conversations;
+}
+
+Route::get($prefix, function(){
+
+	$cons = getConversations();
+
+	foreach($cons as $con){
+		echo "--> ". $con['name'];
+	}
+
+	return View::make("messenger::conversations", array('conversations', $cons));
 
 });
 
@@ -35,6 +56,6 @@ Route::get($prefix.'/{id}', function($id){
 		echo "---> ". $msg->user->username;
 	}
 
-	//return View::make('messenger::conversation.inbox', array('id' => $id));
+	return View::make("messenger::messages");
 
 });
