@@ -6,17 +6,19 @@
 
   <body>
 
-    <!-- TODO Navbar -->
+    @section('sidebar')
+      Sidebar. Is a section, because maybe it will be extened
+      by child-templates
+    @show
 
-    <header>
-      <div>
-        @yield('header')
-      </div>
-    </header>
+    <div class="header">
+      @yield('header')
+    </div>
 
-    <div>
+    <div class="content">
       @yield('content')
     </div>
 
   </body>
+  
 </html>
