@@ -5,7 +5,9 @@
   </head>
 
   <body>
-    <h1>Messaging-System for Laravel 4</h1>
+
+    <!-- TODO Navbar -->
+
     <header>
       <div>
         @yield('header')
@@ -17,5 +19,4 @@
     </div>
 
   </body>
-
 </html>
