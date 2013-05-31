@@ -18,7 +18,7 @@ Route::get($prefix, function(){
 	//return View::make("");
 });
 
-Route::get($prefix."/inbox", function(){
+Route::get($prefix, function(){
 
 	$cons = Conversation::all();
 
@@ -31,7 +31,7 @@ Route::get($prefix."/inbox", function(){
 });
 
 //Display messages from specific conversation
-Route::get($prefix.'/inbox/{id}', function($id){
+Route::get($prefix.'/{id}', function($id){
 	$con = Conversation::find($id);
 
 	if($con == null)
