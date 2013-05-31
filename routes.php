@@ -18,7 +18,7 @@ Route::get($prefix, function(){
 		echo "--> ". $con->name;
 	}
 
-	return View::make("messenger::conversation.index");
+	return View::make("messenger::conversations");
 
 });
 

@@ -6,9 +6,8 @@
 
   <body>
 
-    @section('sidebar')
-      Sidebar. Is a section, because maybe it will be extened
-      by child-templates
+    @section('navigation')
+      {{-- Navigation-bar --}}
     @show
 
     <div class="header">
@@ -20,5 +19,5 @@
     </div>
 
   </body>
-  
+
 </html>
