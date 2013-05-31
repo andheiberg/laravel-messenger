@@ -21,9 +21,9 @@ function getConversations(){
 
 		$item['id'] = $con->id;
 		$item['name'] = $con->name;
-		$item['users'] = array();//$con->users;
+		$item['users'] = ($t = $con->users()->get()->toArray());
 
-		//var_dump($item['users']);
+		var_dump($item['users']);
 
 		array_push($conversations, $item);
 	}
@@ -44,7 +44,7 @@ Route::get($prefix.'/{id}', function($id){
 	$con = Conversation::find($id);
 
 	if($con == null)
-		return "failure"; //TODO
+		return "unknown ID";
 
 	$msgs = $con->messages()->get();
 
