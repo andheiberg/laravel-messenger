@@ -1,15 +1,15 @@
-@extends('master')
+@extends('messenger::master')
 
 @section('sidebar')
     @parent
-    <p>Erweitert die Sidebar</p>
+    <p>Extends Navigation in Messages</p>
 @stop
 
 @section('header')
-    <p>All Messages from specific user</p>
+    <h1>All Messages from specific user</h1>
 @stop
 
 @section('content')
+	@include('messenger::newMessage')
     <p>List of all Messages</p>
-    <p>New Message</p>
 @stop

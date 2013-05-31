@@ -1,16 +1,16 @@
-@extends('master')
+@extends('messenger::master')
 
-@section('sidebar')
+@section('navigation')
     @parent
-    <p>Erweitert die Sidebar</p>
+    <p>Extends Navigation in Conversations</p>
 @stop
 
 @section('header')
-    <p>All Conversation</p>
+    <h1>Your Conversations</h1>
 @stop
 
 @section('content')
+	@include('messenger::newConversation')
     <p>List of all Conversations</p>
-    <p>New Conversation</p>
 @stop
 

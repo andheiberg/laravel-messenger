@@ -7,7 +7,7 @@
   <body>
 
     @section('navigation')
-      {{-- Navigation-bar --}}
+      Navigation-Bar
     @show
 
     <div class="header">
