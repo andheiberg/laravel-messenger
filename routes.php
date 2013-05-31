@@ -21,9 +21,7 @@ function getConversations(){
 
 		$item['id'] = $con->id;
 		$item['name'] = $con->name;
-		$item['users'] = ($t = $con->users()->get()->toArray());
-
-		var_dump($item['users']);
+		$item['users'] = $con->users()->get()->toArray();
 
 		array_push($conversations, $item);
 	}

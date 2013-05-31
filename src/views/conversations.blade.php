@@ -12,6 +12,19 @@
 @section('content')
 
 	<table>
+		<tr>
+			<th>
+				ID
+			</th>
+
+			<th>
+				Name
+			</th>
+
+			<th>
+				Members
+			</th>
+		</tr>
 
 
 		@foreach($conversations as $con)
@@ -25,7 +38,9 @@
 				</td>
 
 				<td>
-					{{implode($con['users'])}}
+					@foreach($con['users'] as &$user)
+						{{$user['username']}}
+					@endforeach
 				</td>
 			</tr>
 		@endforeach
