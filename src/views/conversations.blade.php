@@ -15,19 +15,19 @@
 
 
 		@foreach($conversations as $con)
+			<tr>
+				<td>
+					{{$con['id']}}
+				</td>
 
-			<td>
-				{{$con['id']}}
-			</td>
+				<td>
+					{{$con['name']}}
+				</td>
 
-			<td>
-				{{$con['name']}}
-			</td>
-
-			<td>
-				{{implode($con['users'])}}
-			</td>
-
+				<td>
+					{{implode($con['users'])}}
+				</td>
+			</tr>
 		@endforeach
 
 	</table>
