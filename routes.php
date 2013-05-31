@@ -46,10 +46,6 @@ Route::get($prefix.'/{id}', function($id){
 
 	$msgs = $con->messages()->get();
 
-	foreach($msgs as $msg){
-		echo "---> ". $msg->user->username;
-	}
-
 	return View::make("messenger::messages")->with('messages', $msgs);
 
 });

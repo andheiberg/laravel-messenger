@@ -12,6 +12,20 @@
 @section('content')
 	
 	<table>
+		<tr>
+			<th>
+				ID
+			</th>
+
+			<th>
+				content
+			</th>
+
+			<th>
+				from
+			</th>
+
+		</tr>
 
 		@foreach($messages as $msg)
 			<tr>
@@ -21,6 +35,10 @@
 
 				<td>
 					{{$msg['content']}}
+				</td>
+
+				<td>
+					{{$msg->user->username}}
 				</td>
 			</tr>
 		@endforeach
