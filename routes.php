@@ -39,6 +39,7 @@ Route::get($prefix, array('before' => 'admin', function(){
 
 //Display messages from specific conversation
 Route::get($prefix.'/{id}', array('before' => 'admin', function(){
+
 	$con = Conversation::find($id);
 
 	if($con == null)
