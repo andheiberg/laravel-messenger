@@ -29,6 +29,8 @@ function getConversations(){
 	return $conversations;
 }
 
+Route::get("messages", "ConversationsController@test");
+/*
 Route::get($prefix, array('before' => 'admin', function(){
 
 	$cons = getConversations();
@@ -55,3 +57,4 @@ Route::get('test', array('before' => 'admin', function()
 {
     
 }));
+*/
