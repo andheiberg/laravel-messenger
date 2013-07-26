@@ -1,10 +1,15 @@
 <?php
 
-class FooTest extends PHPUnit_Framework_TestCase {
+class MyFirstTest extends TestCase {
+
+	//test Models
+	public function testMe(){
+		//$this->assertFalse(true);
+	}
 
     public function testSomethingIsTrue()
     {
-        $this->assertTrue(true);
+        //$this->assertTrue(false);
     }
 
 }

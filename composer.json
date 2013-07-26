@@ -16,6 +16,9 @@
         "illuminate/support": "4.0.x",
         "pichkrement/tokenauth": "dev-master"
     },
+    "require-dev": {
+        "orchestra/testbench": "2.0.*"
+    },
     "autoload": {
         "classmap": [
             "src/migrations",

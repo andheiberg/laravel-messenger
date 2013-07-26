@@ -27,7 +27,7 @@ We extended the standard Laravel User-Model to satisfy the requirements.
 
 * Users have many conversations
 * A conversation belongs to many users
-* A message belongs to a well defined conversation
+* A message belongs to a single conversation
 * A conversation consists of many Messages
 
 ### ER-Model Prototype
