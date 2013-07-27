@@ -17,6 +17,7 @@ class CreateUsersTable extends Migration {
 				$table->string('username', 30)->unique();
 				$table->string('firstname', 30);
 				$table->string('surname', 30);
+				$table->string('password', 30);
 				$table->string('email', 30)->unique();
 				$table->timestamps();
 			});
@@ -39,6 +40,11 @@ class CreateUsersTable extends Migration {
 			if(!Schema::hasColumn('users', 'email')){
 				Schema::table('users', function($table){
 					$table->string('email', 30)->unique();
+				});
+			}
+			if(!Schema::hasColumn('password', 'email')){
+				Schema::table('users', function($table){
+					$table->string('password', 30)->unique();
 				});
 			}
 		}

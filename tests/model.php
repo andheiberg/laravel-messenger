@@ -1,27 +1,42 @@
 <?php
 
-class Model extends TestCase {
-	public function testUserModelUsername(){
-		$user = new User;
+class Model extends DBTestCase {
 
-		$this->assertObjectHasAttribute("username", $user);
+	function setUp(){
+
+		parent::setUp();
+
+		$c = new Conversation;
+
+		$this->user = new User(
+			array(
+				"username"=>"maxmustermann",
+				"firstname"=>"max",
+				"surname"=>"mustermann",
+				"email"=>"max.mustermann@gmail.com"
+				));
+
+	}
+
+	public function testUserModelUsername(){
+		$this->assertEquals("maxmustermann", $this->user->username);
 	}
 
 	public function testUserModelFirstname(){
-		$user = new User;
-
-		$this->assertObjectHasAttribute("firstname", $user);
+		$this->assertEquals("max", $this->user->firstname);
 	}
 
 	public function testUserModelSurname(){
-		$user = new User;
-
-		$this->assertObjectHasAttribute("surname", $user);
+		$this->assertEquals("mustermann", $this->user->surname);
 	}
 
 	public function testUserModelEmail(){
-		$user = new User;
-		
-		$this->assertObjectHasAttribute("email", $user);
+		$this->assertEquals("max.mustermann@gmail.com", $this->user->email);
+	}
+
+	public function testConversationModel(){
+		$c = new Conversation;
+
+		//$this->assertObjectHasAttribute("id", $c);
 	}
 }
