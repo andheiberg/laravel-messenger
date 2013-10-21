@@ -1,7 +1,7 @@
 <?php
+namespace Pichkrement\Messenger\Models;
 
-
-class Message extends Eloquent {
+class Message extends \Eloquent {
 
 	/**
 	 * The database table used by the model.
