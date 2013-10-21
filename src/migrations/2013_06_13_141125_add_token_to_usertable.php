@@ -13,7 +13,7 @@ class AddTokenToUsertable extends Migration {
 	{
 		Schema::table('users', function($table)
 	    {
-	        $table->string('token')->unique();
+	        $table->string('token')->unique()->nullable();
 	    });
 	}
 
