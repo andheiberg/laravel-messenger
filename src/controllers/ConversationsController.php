@@ -1,11 +1,11 @@
 <?php
-
+namespace Pichkrement\Messenger\Controllers;
 
 class ConversationsController extends BaseController{
 
-    public function test(){
+    public function info(){
 
-        return "Hallo";
+        return "Hallo Messenger";
 
     }
 
