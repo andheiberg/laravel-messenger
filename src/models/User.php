@@ -1,10 +1,7 @@
 <?php
 namespace Pichkrement\Messenger\Models;
 
-use Illuminate\Auth\UserInterface;
-use Illuminate\Auth\Reminders\RemindableInterface;
-
-class User extends \Eloquent implements \UserInterface, \RemindableInterface {
+class User extends \Eloquent implements \Illuminate\Auth\UserInterface, \Illuminate\Auth\Reminders\RemindableInterface {
 
 	protected $guarded = array('id', 'password');
 
