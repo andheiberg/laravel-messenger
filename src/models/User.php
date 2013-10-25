@@ -1,6 +1,8 @@
 <?php
 namespace Pichkrement\Messenger\Models;
 
+use Pichkrement\Messenger\Models\Conversation as Conversation;
+
 class User extends \Eloquent implements \Illuminate\Auth\UserInterface, \Illuminate\Auth\Reminders\RemindableInterface {
 
 	protected $guarded = array('id', 'password');
@@ -51,12 +53,44 @@ class User extends \Eloquent implements \Illuminate\Auth\UserInterface, \Illumin
 
 
 	public function messages(){
-		return $this->hasMany('Message');
+		return $this->hasMany('Pichkrement\Messenger\Models\Message');
 	}
 
 	public function conversations()
     {
-        return $this->belongsToMany('Conversation');
+        return $this->belongsToMany('Pichkrement\Messenger\Models\Conversation');
+    }
+
+    // send functions
+
+    public function send($user, $text){
+
+    	//test preconditions
+    	if(! get_class($user) === 'Pichkrement\Messenger\Models\User')
+    		return false;
+
+
+    	//test if there is an conversation between the two members
+    	$con = Conversation::user_filter(array($this, $user));
+
+    	//create new conversation [optional]
+    	if (is_null($con))
+    		$con = new Conversation;
+
+    	$con->name = "Conversation {$user->username} and {$this->username}";
+    	//link users to conversation
+    	$con->save();
+
+    	$con->users()->sync(array($user->id, $this->id));
+
+    	//create new Message and add it to conversation
+    	$msg = new Message;
+    	$msg->content = $text;
+    	$msg->user_id = $this->id;
+
+    	$con->messages()->save($msg);
+    	
+
     }
 
 }

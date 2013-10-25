@@ -18,5 +18,28 @@ class Conversation extends \Eloquent {
 		return $this->belongsToMany('User');
 	}
 
+	public static function user_filter($users) {
+		// TODO test preconditions
+		//if(!is_array($users))
+
+		//TODO rewrite
+		$ids = array();
+		foreach ($users as $u) {
+			array_push($ids, $u->id);
+		}
+
+		sort($ids);
+		
+		foreach (self::all() as $c){
+			$u_ids = $c->users->lists('id');
+			sort ( $u_ids );
+
+			if ($u_ids === $ids)
+				return $c;
+		}
+
+		return null;
+	}
+
 	
 }
