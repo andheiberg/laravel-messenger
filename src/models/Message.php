@@ -11,11 +11,11 @@ class Message extends \Eloquent {
 	protected $table = 'messages';
 
 	public function conversation(){
-		return $this->belongsTo('Conversation');
+		return $this->belongsTo('\Pichkrement\Messenger\Models\Conversation');
 	}
 
 	public function user(){
-		return $this->belongsTo('User');
+		return $this->belongsTo('\Pichkrement\Messenger\Models\User');
 	}
 
 }

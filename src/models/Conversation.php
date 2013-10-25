@@ -11,11 +11,11 @@ class Conversation extends \Eloquent {
 	protected $table = 'conversations';
 
 	public function messages(){
-		return $this->hasMany('Message');
+		return $this->hasMany('\Pichkrement\Messenger\Models\Message');
 	}
 
 	public function users(){
-		return $this->belongsToMany('User');
+		return $this->belongsToMany('\Pichkrement\Messenger\Models\User');
 	}
 
 	public static function user_filter($users) {
