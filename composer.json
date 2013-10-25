@@ -23,7 +23,8 @@
         "classmap": [
             "src/migrations",
             "src/models",
-            "src/controllers"
+            "src/controllers",
+            "src/lib"
         ],
         "psr-0": {
             "Pichkrement\\Messenger": "src/"
