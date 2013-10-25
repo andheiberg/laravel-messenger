@@ -1,7 +1,7 @@
 <?php
 namespace Pichkrement\Messenger\Controllers;
 
-use Pichkrement\Messenger\Lib\Helper as H;
+use \Pichkrement\Messenger\Lib\Helper as H;
 use \Pichkrement\Messenger\Models\User as User;
 use \Pichkrement\Messenger\Models\Message as Message;
 use \Pichkrement\Messenger\Models\Conversation as Conversation;
