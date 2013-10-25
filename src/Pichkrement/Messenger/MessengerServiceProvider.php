@@ -20,7 +20,6 @@ class MessengerServiceProvider extends ServiceProvider {
 	{
 		$this->package('pichkrement/messenger');
 
-		include __DIR__.'/../../../routes.php';
 	}
 
 	/**
