@@ -24,20 +24,15 @@ class User extends \Eloquent implements \Illuminate\Auth\UserInterface, \Illumin
 	 */
 	protected $hidden = array('password');
 
-
-	public static function validate($input){
-
-		$rules = array(
+	public static $rules = array(
 			'surname' => 'Required|Min:3|Max:80|Alpha',
 			'firstname' => 'Required|Min:3|Max:80',
 			'email' => 'Required|Between:3,64|Email|Unique:users',
 			'password' => 'Required',
 			'token' => ''
-		);
+	);
 		
 
-		return Validator::make($input, $rules);
-	}
 	/**
 	 * Get the unique identifier for the user.
 	 *
