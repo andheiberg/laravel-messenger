@@ -24,12 +24,24 @@ class User extends \Eloquent implements \Illuminate\Auth\UserInterface, \Illumin
 	 */
 	protected $hidden = array('password');
 
+	protected $fillable = array('username', 'firstname', 'surname', 'email', "password");
+
 	public static $rules = array(
-			'surname' => 'Required|Min:3|Max:80|Alpha',
+		"save" => array(
+			"username" => 'required|min:4',
+			'surname' => 'Required|Min:3|Max:80',
 			'firstname' => 'Required|Min:3|Max:80',
-			'email' => 'Required|Between:3,64|Email|Unique:users',
-			'password' => 'Required',
-			'token' => ''
+			'email' => 'required|between:3,64|email',
+			'password' => 'required',
+			'token' => 'required|min:3'
+			),
+		"create" => array(
+			'username' => 'unique:users',
+			'email' => 'unique:users',
+			'password' => 'confirmed',
+			'password_confirmation' => 'required'
+			),
+		"update" => array()	
 	);
 		
 
