@@ -27,21 +27,12 @@ class User extends \Eloquent implements \Illuminate\Auth\UserInterface, \Illumin
 	protected $fillable = array('username', 'firstname', 'surname', 'email', "password");
 
 	public static $rules = array(
-		"save" => array(
-			"username" => 'required|min:4',
-			'surname' => 'Required|Min:3|Max:80',
-			'firstname' => 'Required|Min:3|Max:80',
-			'email' => 'required|between:3,64|email',
-			'password' => 'required',
-			'token' => 'required|min:3'
-			),
-		"create" => array(
-			'username' => 'unique:users',
-			'email' => 'unique:users',
-			'password' => 'confirmed',
-			'password_confirmation' => 'required'
-			),
-		"update" => array()	
+		"username" => 'required|min:4|unique:users',
+		'surname' => 'Required|Min:3|Max:80',
+		'firstname' => 'Required|Min:3|Max:80',
+		'email' => 'required|between:3,64|email|unique:users',
+		'password' => 'required',
+		'token' => 'required|min:3'
 	);
 		
 
