@@ -22,7 +22,7 @@ class User extends \Eloquent implements \Illuminate\Auth\UserInterface, \Illumin
 	 *
 	 * @var array
 	 */
-	protected $hidden = array('password');
+	protected $hidden = array('password', 'token');
 
 	protected $fillable = array('username', 'firstname', 'surname', 'email', "password", "token");
 
