@@ -24,7 +24,7 @@ class User extends \Eloquent implements \Illuminate\Auth\UserInterface, \Illumin
 	 */
 	protected $hidden = array('password');
 
-	protected $fillable = array('username', 'firstname', 'surname', 'email', "password");
+	protected $fillable = array('username', 'firstname', 'surname', 'email', "password", "token");
 
 	public static $rules = array(
 		"username" => 'required|min:4|unique:users',
