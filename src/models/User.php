@@ -76,6 +76,28 @@ class User extends \Eloquent implements \Illuminate\Auth\UserInterface, \Illumin
         return $this->belongsToMany('Pichkrement\Messenger\Models\Conversation');
     }
 
+/*
+    public function createConversation($name, $participantEmails){
+
+    	$c = new Conversation;
+    	$c->name = $name;
+
+    	//if only one email convert to array
+    	if(is_string($participantEmails)) $participantEmails = array($participantEmails);
+
+    	$friend_ids = array(Auth::user()->id);
+
+    	foreach($participantEmails as $f){
+    		$user = User::where('email','=',$f)->first();
+    		
+    		if (!is_null($user)) $friend_ids[] = $user->id;
+    	}
+ 
+    	$c->attach($friend_ids);
+    }
+
+    */
+
     // send functions
 
     public function send($user, $text){

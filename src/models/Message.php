@@ -10,6 +10,8 @@ class Message extends \Eloquent {
 	 */
 	protected $table = 'messages';
 
+	protected $fillable = array('user_id', 'content','conversation_id');
+
 	public function conversation(){
 		return $this->belongsTo('\Pichkrement\Messenger\Models\Conversation');
 	}

@@ -10,6 +10,12 @@ class Conversation extends \Eloquent {
 	 */
 	protected $table = 'conversations';
 
+	public static $rules = array(
+		"name" => 'required|min:4',
+	);
+
+	protected $fillable = array('name');
+
 	public function messages(){
 		return $this->hasMany('\Pichkrement\Messenger\Models\Message');
 	}
@@ -39,6 +45,23 @@ class Conversation extends \Eloquent {
 		}
 
 		return null;
+	}
+
+	public function addUser($participantEmails){
+		//if only one email convert to array
+    	if(is_string($participantEmails)) $participantEmails = array($participantEmails);
+
+    	$friend_ids = array();
+
+    	foreach($participantEmails as $f){
+    		$user = User::where('email','=',$f)->first();
+    		
+    		if (!is_null($user)) $friend_ids[] = $user->id;
+    	}
+
+    	\Log::info("adduser: " . implode(' ,', $friend_ids));
+ 
+    	if(count($friend_ids)) $this->users()->attach($friend_ids);
 	}
 
 	
