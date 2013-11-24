@@ -25,10 +25,10 @@ We extended the standard Laravel User-Model to satisfy the requirements.
 
 ##Installation
 
-First of all, integrate the source code into your project. This is done, by adding the package name to your composer.json file and 
+First of all, integrate the source code into your project. You can do it, by adding the package name to your composer.json file and 
 calling the update function:
 
-*You will find a "require" section (enclosed within two curly brackets) within the compsoser.json file. Please add the given line (project name and version) there. The different package-requirements should be separeted with an comma, but the last one should not be terminated!*
+*You will find a "require" section (enclosed within two curly brackets) in your project's composer file. Please add the given line (project name and version) there. The different package-requirements should be separeted with an comma, but the last one should not be terminated!*
 
 example of an valid composer.json file:
 
@@ -72,20 +72,20 @@ example of an valid composer.json file:
  }  
 ```
 
-Now you have to update your changes. This is done, by calling the composer command. Therefore jump into the base-directory of your project (this is the parent folder of ./app ./public and ./src) and call the following commands:
+Now you have to update your changes and integrate it. Call the *composer install* and *artisan migrate* command in the base-directory of your project (this is the parent folder of ./app ./public and ./src):
 
 ```bash
 composer install && composer dump-autoload  
 php artisan migrate --package "pichkrement/messenger"
 ```
 
-If the first command does not work, you should check your composer installation! Is it installedand global available? (You will find one of the best installation guides [right here](http://askubuntu.com/questions/116960/global-installation-of-composer-manual#165241)). The second command migrates the database (if it throws errors, it's probably that there is no database configured yet. Just take a look at [this page](http://laravel.com/docs/database#configuration) for more details)
+If the first command does not work, you should check your composer installation! Is it installed and global available? (You will find one of the best installation guides [right here](http://askubuntu.com/questions/116960/global-installation-of-composer-manual#165241)). The second command migrates the database (if it throws an error, it's probably because your database is not configured yet. Just take a look at [this page](http://laravel.com/docs/database#configuration) for more details)
 
 ## Usage
 
 Congratulations! Now you can use the laravel4 messenger.
 
-Just extend your models (app/models/*) with the messenger-base models (Message, User and Conversation). It should look like this:
+Just extend your Eloquent ORM models (app/models/*) with the messenger-base models (Message, User and Conversation). It should look like this:
 
 ```php
 // app/models/Conversation.php
