@@ -141,6 +141,7 @@ now you can use it like a pro.
     //or using the alternative Syntax
     $c2 = new Conversation;
     $c2->name = "some name";
+    $c2->save();
 
     //add all available users (untested)
     $c2->addUser( array_fetch(User::all()->toArray(), 'id') );
