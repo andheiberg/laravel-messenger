@@ -116,22 +116,34 @@ now you can use it like a pro.
 ```php
 
     //create new Conversation
-    $c = Conversation::create($name);
+    $c1 = Conversation::create(
+    	array(
+    		'name' => 'some name'
+    		)
+    	);
     
     //add authenticated User
-    $c->users()->attach(Auth::user()->id);
+    $c1->users()->attach(Auth::user()->id);
 
     //create new Message
     Message::create(
         array(
             'content' => "Hello World!" , 
             'user_id' => Auth::user()->id, 
-            'conversation_id' => $c->id
+            'conversation_id' => $c1->id
         )
     );
 
     //add other participants
-    $c->addUser(array(/* some user id's please */));
+    $c1->addUser(array(/* some user id's please */));
+
+
+    //or using the alternative Syntax
+    $c2 = new Conversation;
+    $c2->name = "some name";
+
+    //add all available users (untested)
+    $c2->addUser( array_fetch(User::all()->toArray(), 'id') );
 ```
 
 #### Fetch data
