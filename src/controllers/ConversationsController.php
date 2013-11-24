@@ -1,4 +1,10 @@
 <?php
+
+/**
+ * Attention:
+ * This is just an example and not for production!
+ *
+**/
 namespace Pichkrement\Messenger\Controllers;
 
 use \Pichkrement\Messenger\Models\User as User;

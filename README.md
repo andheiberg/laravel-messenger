@@ -2,24 +2,8 @@
 
 Basic Messaging System for Laravel4
 
-##Requirements
-
-* Eloquent ORM
-
-##Installation
-
-1. *download l4 Messenger*: Open your composer.json and add following line to the require-section:
-
-> "pichkrement/messenger" : "*",
-
-2. got to your laravel-public folder and run
-
-> composer install && composer dump-autoload  
-> php artisan migrate --package "pichkrement/messenger"
-
-3. add the new ServiceProvider to your **app/config/app.php** *(providers-array)*
-
-> 'Pichkrement\Messenger\MessengerServiceProvider',
+## Introduction
+The main purpose of this package is providing an suited Foundation for extended communication platforms, based on laravel 4 (or compatible frameworks).
 
 ##Overview
 You have many users and they want to chat? Couldn't be simplier!
@@ -33,3 +17,136 @@ We extended the standard Laravel User-Model to satisfy the requirements.
 ### ER-Model Prototype
 
 ![ER-Model](https://googledrive.com/host/0B_FVWRYj6sQ7WG42TVp2U0ZmaDQ)
+
+
+##Requirements
+
+* Eloquent ORM
+
+##Installation
+
+First of all, integrate the source code into your project. This is done, by adding the package name to your composer.json file and 
+calling the update function:
+
+*You will find a "require" section (enclosed within two curly brackets) within the compsoser.json file. Please add the given line (project name and version) there. The different package-requirements should be separeted with an comma, but the last one should not be terminated!*
+
+example of an valid composer.json file:
+
+```json
+ {  
+    "name": "company/yourproject",  
+	"description": "some bla bla",  
+	"keywords": ["framework", "laravel"],  
+	"license": "free like free beer",  
+	"require": {  
+		"laravel/framework": "4.0.*",  
+		"pichkrement/messenger": "dev-master",  
+		"pichkrement/tokenauth": "dev-master"  
+        },  
+	"autoload": {  
+		"classmap": [  
+			"app/commands",  
+			"app/controllers",  
+			"app/models",  
+			"app/database/migrations",  
+			"app/database/seeds",  
+			"app/tests/TestCase.php"  
+		]  
+	},  
+	"scripts": {  
+		"post-install-cmd": [  
+			"php artisan optimize"  
+		],  
+		"post-update-cmd": [  
+			"php artisan clear-compiled",  
+			"php artisan optimize"  
+		],  
+		"post-create-project-cmd": [  
+			"php artisan key:generate"  
+		]  
+	},  
+	"config": {  
+		"preferred-install": "dist"  
+	},  
+	"minimum-stability": "dev"  
+ }  
+```
+
+Now you have to update your changes. This is done, by calling the composer command. Therefore jump into the base-directory of your project (this is the parent folder of ./app ./public and ./src) and call the following commands:
+
+```bash
+composer install && composer dump-autoload  
+php artisan migrate --package "pichkrement/messenger"
+```
+
+If the first command does not work, you should check your composer installation! Is it installedand global available? (You will find one of the best installation guides [right here](http://askubuntu.com/questions/116960/global-installation-of-composer-manual#165241)). The second command migrates the database (if it throws errors, it's probably that there is no database configured yet. Just take a look at [this page](http://laravel.com/docs/database#configuration) for more details)
+
+## Usage
+
+Congratulations! Now you can use the laravel4 messenger.
+
+Just extend your models (app/models/*) with the messenger-base models (Message, User and Conversation). It should look like this:
+
+```php
+// app/models/Conversation.php
+
+<?php
+class Conversation extends Pichkrement\Messenger\Models\Conversation {}
+```
+
+```php
+// app/models/Message.php
+
+<?php
+class Message extends Pichkrement\Messenger\Models\Message {}
+```
+
+```php
+// app/models/User.php
+
+<?php
+class User extends Pichkrement\Messenger\Models\User {}
+```
+
+### Examples
+now you can use it like a pro.
+
+#### Create new Converstions and add Messages:
+
+```php
+
+    //create new Conversation
+    $c = Conversation::create($name);
+    
+    //add authenticated User
+    $c->users()->attach(Auth::user()->id);
+
+    //create new Message
+    Message::create(
+        array(
+            'content' => "Hello World!" , 
+            'user_id' => Auth::user()->id, 
+            'conversation_id' => $c->id
+        )
+    );
+
+    //add other participants
+    $c->addUser(array(/* some user id's please */));
+```
+
+#### Fetch data
+
+```php
+
+    //get all Messages from a single conversation as array
+    $data = Conversation::findOrFail($id)->messages()->get()->toArray();
+    
+    //get all conversations from the authenticated user
+    $data = Auth::user()->conversations()->get()->toArray();
+    
+    //get one attribute form all members of a conversation (here the firstname)
+    array_fetch( Conversation::find($conv_id)->users->toArray(), 'firstname' ))
+```
+
+
+
