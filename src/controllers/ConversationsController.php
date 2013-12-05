@@ -11,7 +11,7 @@ use \Pichkrement\Messenger\Models\User as User;
 use \Pichkrement\Messenger\Models\Message as Message;
 use \Pichkrement\Messenger\Models\Conversation as Conversation;
 
-class ConversationsController extends \BaseController{
+class ExampleController extends \BaseController{
 
     public function info(){
 

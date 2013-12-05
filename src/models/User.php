@@ -76,31 +76,17 @@ class User extends \Eloquent implements \Illuminate\Auth\UserInterface, \Illumin
         return $this->belongsToMany('Pichkrement\Messenger\Models\Conversation');
     }
 
-/*
-    public function createConversation($name, $participantEmails){
-
-    	$c = new Conversation;
-    	$c->name = $name;
-
-    	//if only one email convert to array
-    	if(is_string($participantEmails)) $participantEmails = array($participantEmails);
-
-    	$friend_ids = array(Auth::user()->id);
-
-    	foreach($participantEmails as $f){
-    		$user = User::where('email','=',$f)->first();
-    		
-    		if (!is_null($user)) $friend_ids[] = $user->id;
-    	}
- 
-    	$c->attach($friend_ids);
-    }
-
-    */
-
     // send functions
 
-    public function send($user, $text){
+    /**
+     * send
+     *
+     * send message to receiver
+     *
+     * @param Pichkrement\Messenger\Models\User $receiver receiver
+     * @return boolean
+     */
+    public function send($receiver, $text, $subject){
 
     	//test preconditions
     	if(! get_class($user) === 'Pichkrement\Messenger\Models\User')
@@ -110,16 +96,17 @@ class User extends \Eloquent implements \Illuminate\Auth\UserInterface, \Illumin
     	//test if there is an conversation between the two members
     	$con = Conversation::user_filter(array($this, $user));
 
-    	//create new conversation [optional]
-    	if (is_null($con))
+    	//create new conversation
+    	if (is_null($con)){
     		$con = new Conversation;
+    		$con->name = $subject;
+	    	//link users to conversation
+	    	$con->save();
 
-    	$con->name = "Conversation {$user->username} and {$this->username}";
-    	//link users to conversation
-    	$con->save();
+	    	$con->users()->sync(array($user->id, $this->id));
+    	}
 
-    	$con->users()->sync(array($user->id, $this->id));
-
+    	
     	//create new Message and add it to conversation
     	$msg = new Message;
     	$msg->content = $text;
@@ -127,7 +114,7 @@ class User extends \Eloquent implements \Illuminate\Auth\UserInterface, \Illumin
 
     	$con->messages()->save($msg);
     	
-
+    	return true;
     }
 
 }

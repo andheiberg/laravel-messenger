@@ -24,9 +24,16 @@ class Conversation extends \Eloquent {
 		return $this->belongsToMany('\Pichkrement\Messenger\Models\User');
 	}
 
-	public static function user_filter($users) {
-		// TODO test preconditions
-		//if(!is_array($users))
+	/**
+	 * user_filter
+	 *
+	 * get all conversations of given users
+	 *
+	 * @todo test preconditions
+	 * @param array $users
+	 * @return 
+	 */
+	public static function user_filter(array $users) {
 
 		//TODO rewrite
 		$ids = array();
@@ -47,10 +54,15 @@ class Conversation extends \Eloquent {
 		return null;
 	}
 
-	public function addUser($participantEmails){
-		//if only one email convert to array
-    	if(is_string($participantEmails)) $participantEmails = array($participantEmails);
-
+	/**
+	 * addUser
+	 *
+	 * adds users to this conversation
+	 *
+	 * @param array $participantEmails list of all participants
+	 * @return void
+	 */
+	public function addUser(array $participantEmails){
     	$friend_ids = array();
 
     	foreach($participantEmails as $f){
@@ -58,8 +70,6 @@ class Conversation extends \Eloquent {
     		
     		if (!is_null($user)) $friend_ids[] = $user->id;
     	}
-
-    	\Log::info("adduser: " . implode(' ,', $friend_ids));
  
     	if(count($friend_ids)) $this->users()->attach($friend_ids);
 	}
