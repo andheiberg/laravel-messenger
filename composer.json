@@ -21,10 +21,8 @@
     },
     "autoload": {
         "classmap": [
-            "src/migrations",
             "src/models",
-            "src/controllers",
-            "src/lib"
+            "src/controllers"
         ],
         "psr-0": {
             "Pichkrement\\Messenger": "src/"
