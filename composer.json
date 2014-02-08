@@ -12,8 +12,8 @@
         }
     ],
     "require": {
-        "laravel/framework": "4.0.*",
-        "illuminate/support": "4.0.x"
+        "laravel/framework": "4.*",
+        "illuminate/support": "4.x"
     },
     "require-dev": {
         "mockery/mockery": "dev-master"
