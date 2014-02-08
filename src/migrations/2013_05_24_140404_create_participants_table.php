@@ -2,7 +2,7 @@
 
 use Illuminate\Database\Migrations\Migration;
 
-class CreateMessagesTable extends Migration {
+class CreateParticipantsTable extends Migration {
 
 	/**
 	 * Run the migrations.
@@ -11,16 +11,16 @@ class CreateMessagesTable extends Migration {
 	 */
 	public function up()
 	{
-		Schema::create('messages', function($table) 
+		Schema::create('participants', function($table) 
 		{
 			$table->increments('id');
 			$table->integer('conversation_id')->unsigned();
 			$table->integer('user_id')->unsigned();
-			$table->text('body');
+			$table->timestamp('last_read');
 			$table->timestamps();
 
 			$table->foreign('conversation_id')->references('id')->on('conversations');
-			$table->foreign('user_id')->references('id')->on('users')->onUpdate('cascade');
+			$table->foreign('user_id')->references('id')->on('users');
 		});
 	}
 
@@ -31,7 +31,7 @@ class CreateMessagesTable extends Migration {
 	 */
 	public function down()
 	{
-		Schema::drop('messages');
+		Schema::drop('participants');
 	}
 
 }

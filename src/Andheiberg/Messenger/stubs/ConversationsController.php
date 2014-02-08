@@ -1,36 +1,25 @@
-#Laravel Messenger
-Basic Messaging System for Laravel4
+<?php namespace Controllers;
 
-## Introduction
-The main purpose of this package is providing an suited Foundation for extended communication platforms, based on laravel 4 (or compatible frameworks).
+use Models\User;
+use Models\Message;
+use Models\Conversation;
+use Models\Participant;
+use \App;
 
-##Overview
-You have many users and they want to chat? Couldn't be simplier!
+class ConversationsController extends BaseController {
 
-* Participants have many conversations
-* A conversation belongs to many participants
-* A message belongs to a single conversation
-* A conversation consists of many Messages
-* Participants latest read timestamp is stored
+    /**
+     * Create a BaseController instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        parent::__construct();
 
-##Installation
+        $this->beforeFilter('auth', ['except' => ['info']]);
+    }
 
-* Add `"pichkrement/messenger": "dev-master"` to your composer.json
-* Run `composer update`
-* Add `'Pichkrement\Messenger\MessengerServiceProvider',` to `app/config/app.php` under `providers`
-* Run `php artisan messenger:setup`
-* Add `use \Pichkrement\Messenger\Traits\UserCanMessage\UserCanMessage;` inside your User model class
-
-## Usage
-
-Congratulations! Now you can use the laravel4 messenger.
-
-`php artisan messenger:setup` will publish a Conversation and a Message model to app/models. If you prefer to make them your self, just extend Pichkrement\Messenger\Models\Conversation and Pichkrement\Messenger\Models\Message.
-
-### Examples
-Now you can use it like a pro.
-
-```php
     /**
      * Display a listing of the resource.
      *
@@ -142,5 +131,5 @@ Now you can use it like a pro.
 
         return Redirect::route('conversations.show', $conversation);
     }
-```
 
+}

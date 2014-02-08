@@ -11,9 +11,10 @@ class CreateConversationsTable extends Migration {
 	 */
 	public function up()
 	{
-		Schema::create('conversations', function($table){
+		Schema::create('conversations', function($table) 
+		{
 			$table->increments('id');
-			$table->string('name', 100);
+			$table->string('subject');
 			$table->timestamps();
 		});
 	}

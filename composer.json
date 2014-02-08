@@ -1,14 +1,10 @@
 {
-    "name": "pichkrement/messenger",
+    "name": "andheiberg/messenger",
     "description": "Simple L4 Scaffold/Framework for a (Group) Messaging System",
     "authors": [
         {
-            "name": "Christian Hotz-Behofsits",
-            "email": "christian.hotz-behofsits@tuwien.ac.at"
-        },
-        {
-            "name": "Dominik Pichler",
-            "email": "dpichler90@gmail.com"
+            "name": "Andreas Heiberg",
+            "email": "heibergandreas@gmail.com"
         }
     ],
     "require": {
@@ -19,14 +15,15 @@
         "mockery/mockery": "dev-master"
     },
     "autoload": {
-        "classmap": [
-            "src/models",
-            "src/controllers"
-        ],
         "psr-0": {
-            "Pichkrement\\Messenger": "src/"
-        }
+            "Andheiberg\\Messenger": "src/"
+        },
+        "classmap": [
+            "src/migrations"
+        ],
+        "files": [
+            "src/Andheiberg/Messenger/Traits.php"
+        ]
     },
-    "license": "(GPL-3.0+)",
     "minimum-stability": "dev"
 }
