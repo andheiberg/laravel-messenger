@@ -15,11 +15,11 @@ You have many users and they want to chat? Couldn't be simplier!
 
 ##Installation
 
-* Add `"pichkrement/messenger": "dev-master"` to your composer.json
+* Add `"andheiberg/messenger": "dev-master"` to your composer.json
 * Run `composer update`
-* Add `'Pichkrement\Messenger\MessengerServiceProvider',` to `app/config/app.php` under `providers`
+* Add `'Andheiberg\Messenger\MessengerServiceProvider',` to `app/config/app.php` under `providers`
 * Run `php artisan messenger:setup`
-* Add `use \Pichkrement\Messenger\Traits\UserCanMessage\UserCanMessage;` inside your User model class
+* Add `use \Andheiberg\Messenger\Traits\UserCanMessage;` inside your User model class
 
 ## Usage
 

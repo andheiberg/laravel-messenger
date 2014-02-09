@@ -1,4 +1,4 @@
-<?php namespace Pichkrement\Messenger\Models;
+<?php namespace Andheiberg\Messenger\Models;
 
 use Illuminate\Database\Eloquent\Model as Eloquent;
 use Illuminate\Support\Facades\Config;
@@ -42,7 +42,7 @@ class Message extends Eloquent {
 	 */
 	public function conversation()
 	{
-		return $this->belongsTo('\Pichkrement\Messenger\Models\Conversation');
+		return $this->belongsTo('Andheiberg\Messenger\Models\Conversation');
 	}
 
 	/**

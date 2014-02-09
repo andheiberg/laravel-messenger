@@ -1,4 +1,4 @@
-<?php namespace Andheiberg\Messenger;
+<?php namespace Andheiberg\Messenger\Traits;
 
 trait UserCanMessage
 {
@@ -9,7 +9,7 @@ trait UserCanMessage
 	 */
 	public function messages()
 	{
-		return $this->hasMany('Pichkrement\Messenger\Models\Message');
+		return $this->hasMany('Andheiberg\Messenger\Models\Message');
 	}
 
 	/**
@@ -19,7 +19,7 @@ trait UserCanMessage
 	 */
 	public function conversations()
 	{
-		return $this->belongsToMany('Pichkrement\Messenger\Models\Conversation');
+		return $this->belongsToMany('Andheiberg\Messenger\Models\Conversation');
 	}
 
 	public function newMessagesCount()

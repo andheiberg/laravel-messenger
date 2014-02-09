@@ -55,7 +55,7 @@ class SetupCommand extends Command {
 		Artisan::call('config:publish', ['package' => 'andheiberg/messenger']);
 
 		$this->info('Messenger setup!');
-		$this->info("You should add 'use \Andheiberg\Messenger\Traits\UserCanMessage\UserCanMessage;' inside your user class.");
+		$this->info("You should add 'use \Andheiberg\Messenger\Traits\UserCanMessage;' inside your user class.");
 		$this->info("You should create a route for the controller.");
 	}
 

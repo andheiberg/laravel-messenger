@@ -1,4 +1,4 @@
-<?php namespace Pichkrement\Messenger\Models;
+<?php namespace Andheiberg\Messenger\Models;
 
 use Illuminate\Database\Eloquent\Model as Eloquent;
 
@@ -25,7 +25,7 @@ class Participant extends Eloquent {
 	 */
 	public function conversation()
 	{
-		return $this->belongsTo('Models\Conversation');
+		return $this->belongsTo('Andheiberg\Messenger\Models\Conversation');
 	}
 
 	/**

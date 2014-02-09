@@ -26,7 +26,7 @@ class Conversation extends Eloquent {
 	 */
 	public function messages()
 	{
-		return $this->hasMany('\Pichkrement\Messenger\Models\Message');
+		return $this->hasMany('Andheiberg\Messenger\Models\Message');
 	}
 
 	/**
@@ -36,7 +36,7 @@ class Conversation extends Eloquent {
 	 */
 	public function participants()
 	{
-		return $this->hasMany('\Pichkrement\Messenger\Models\Participant');
+		return $this->hasMany('Andheiberg\Messenger\Models\Participant');
 	}
 
 	public function scopeForUser($query, $id = null)

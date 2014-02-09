@@ -1,6 +1,6 @@
 {
     "name": "andheiberg/messenger",
-    "description": "Simple L4 Scaffold/Framework for a (Group) Messaging System",
+    "description": "Basic messaging package for laravel",
     "authors": [
         {
             "name": "Andreas Heiberg",
@@ -20,9 +20,6 @@
         },
         "classmap": [
             "src/migrations"
-        ],
-        "files": [
-            "src/Andheiberg/Messenger/Traits.php"
         ]
     },
     "minimum-stability": "dev"
