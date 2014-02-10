@@ -55,4 +55,24 @@ class Message extends Eloquent {
 		return $this->belongsTo(Config::get('messenger::user_model'));
 	}
 
+	/**
+	 * Participants relationship
+	 *
+	 * @var \Illuminate\Database\Eloquent\Relations\HasMany
+	 */
+	public function participants()
+	{
+		return $this->hasMany('Andheiberg\Messenger\Models\Participant', 'conversation_id', 'conversation_id');
+	}
+
+	/**
+	 * Recipients of this message
+	 *
+	 * @var \Illuminate\Database\Eloquent\Relations\HasMany
+	 */
+	public function recipients()
+	{
+		return $this->participants()->where('user_id', '!=', $this->user_id)->get();
+	}
+
 }
