@@ -1,6 +1,7 @@
 <?php namespace Andheiberg\Messenger\Models;
 
 use Illuminate\Database\Eloquent\Model as Eloquent;
+use Illuminate\Support\Facades\Config;
 
 class Participant extends Eloquent {
 
