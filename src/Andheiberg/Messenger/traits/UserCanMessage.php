@@ -19,7 +19,7 @@ trait UserCanMessage
 	 */
 	public function conversations()
 	{
-		return $this->belongsToMany('Andheiberg\Messenger\Models\Conversation');
+		return $this->belongsToMany('Andheiberg\Messenger\Models\Conversation', 'participants');
 	}
 
 	public function newMessagesCount()
@@ -30,11 +30,11 @@ trait UserCanMessage
 	public function conversationsWithNewMessages()
 	{
 		$conversationsWithNewMessages = [];
-		$participants = Participant::where('user_id', $this->id)->lists('last_read', 'conversation_id');
+		$participants = \Andheiberg\Messenger\Models\Participant::where('user_id', $this->id)->lists('last_read', 'conversation_id');
 
 		if ($participants)
 		{
-			$conversations = Conversation::whereIn('id', array_keys($participants))->get();
+			$conversations = \Andheiberg\Messenger\Models\Conversation::whereIn('id', array_keys($participants))->get();
 
 			foreach ($conversations as $conversation)
 			{
