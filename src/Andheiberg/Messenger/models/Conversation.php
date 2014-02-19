@@ -39,30 +39,32 @@ class Conversation extends Eloquent {
 		return $this->hasMany('Andheiberg\Messenger\Models\Participant');
 	}
 
-	public function scopeForUser($query, $id = null)
+	public function scopeForUser($query, $user = null)
 	{
-		$id = $id ?: \Auth::user()->id;
+		$user = $user ?: \Auth::user()->id;
 
 		return $query->join('participants', 'conversations.id', '=', 'participants.conversation_id')
-		->where('participants.user_id', $id)
+		->where('participants.user_id', $user)
 		->select('conversations.*');
 	}
 
-	public function scopeWithNewMessages($query, $id = null)
+	public function scopeWithNewMessages($query, $user = null)
 	{
-		$id = $id ?: \Auth::user()->id;
+		$user = $user ?: \Auth::user()->id;
 
 		return $query->join('participants', 'conversations.id', '=', 'participants.conversation_id')
-		->where('participants.user_id', $id)
+		->where('participants.user_id', $user)
 		->where('conversations.updated_at', '>', \DB::raw('participants.last_read'))
 		->select('conversations.*');
 	}
 
-	public function participantsString()
+	public function participantsString($user = null)
 	{
+		$user = $user ?: \Auth::user()->id;
+
 		$participantNames = \DB::table('users')
 		->join('participants', 'users.id', '=', 'participants.user_id')
-		->where('users.id', '!=', \Auth::user()->id)
+		->where('users.id', '!=', $user)
 		->where('participants.conversation_id', $this->id)
 		->select(\DB::raw("concat(users.first_name, ' ', users.last_name) as name"))
 		->lists('users.name');

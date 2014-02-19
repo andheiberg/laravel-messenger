@@ -39,14 +39,18 @@ class Participant extends Eloquent {
 		return $this->belongsTo(Config::get('messenger::user_model'));
 	}
 
-	public function scopeMe($query)
+	public function scopeMe($query, $user = null)
 	{
-		return $query->where('user_id', '=', \Auth::user()->id);
+		$user = $user ?: \Auth::user()->id;
+
+		return $query->where('user_id', '=', $user);
 	}
 
-	public function scopeNotMe($query)
+	public function scopeNotMe($query, $user = null)
 	{
-		return $query->where('user_id', '!=', \Auth::user()->id);
+		$user = $user ?: \Auth::user()->id;
+
+		return $query->where('user_id', '!=', $user);
 	}
 
 }

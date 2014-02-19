@@ -17,7 +17,7 @@ class ConversationsController extends BaseController {
     {
         parent::__construct();
 
-        $this->beforeFilter('auth', ['except' => ['info']]);
+        $this->beforeFilter('auth');
     }
 
     /**
