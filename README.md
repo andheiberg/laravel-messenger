@@ -1,10 +1,10 @@
-#Laravel Messenger
+# Laravel Messenger
 Basic Messaging System for Laravel4
 
 ## Introduction
 The main purpose of this package is providing an suited Foundation for extended communication platforms, based on laravel 4 (or compatible frameworks).
 
-##Overview
+## Overview
 You have many users and they want to chat? Couldn't be simplier!
 
 * Participants have many conversations
@@ -13,7 +13,7 @@ You have many users and they want to chat? Couldn't be simplier!
 * A conversation consists of many Messages
 * Participants latest read timestamp is stored
 
-##Installation
+## Installation
 
 * Add `"andheiberg/messenger": "dev-master"` to your composer.json
 * Run `composer update`
